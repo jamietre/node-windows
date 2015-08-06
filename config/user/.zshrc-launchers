@@ -1,0 +1,35 @@
+editor_default='sublime'
+editor_markdown='markdownpad'
+
+_mappath() {
+	cygpath -w -a $1
+}
+
+_create_if_missing() {
+	if [ ! -f "$1" ]; then
+	   touch $1
+	fi
+}
+
+_edit_sublime() {
+	"/c/Program Files/Sublime Text 3/sublime_text.exe" "$1"
+}
+
+_edit_markdownpad() {
+	_create_if_missing $1
+ 	"/c//Program Files (x86)/MarkdownPad 2/MarkdownPad2.exe" "$1" >/dev/null
+}
+
+_edit_select() {
+  local fullpath=$(_mappath $1)
+  if [[ $1 =~ ".*\.md$" ]]; then
+    $("_edit_"$editor_markdown $fullpath)
+  else 
+    $("_edit_"$editor_default $fullpath)
+  fi
+}
+
+alias edit=_edit_select
+alias st='edit'
+
+
