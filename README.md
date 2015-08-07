@@ -280,7 +280,7 @@ Make sense?
 
 ##Problems
 
-**There are issues with mintty 2.1.3 and ConEmu,** see [this](https://github.com/Maximus5/ConEmu/issues/239). Probably will be fixed in next mintty release. A workaround is to add -d to the invocation for mintty in ConEmu:
+**There are issues with mintty 2.1.3 and ConEmu,**cd /pr see [this](https://github.com/Maximus5/ConEmu/issues/239). Probably will be fixed in next mintty release. A workaround is to add -d to the invocation for mintty in ConEmu:
 
 * Commands: `"%userprofile%\.babun\cygwin\bin\mintty.exe" -d`
 
