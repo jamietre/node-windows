@@ -85,6 +85,6 @@ source $ZSH/oh-my-zsh.sh
 DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
 
-. "$DIR/.zshrc-aliases"
-. "$DIR/.zshrc-launchers"
-. "$DIR/.zshrc-keys"
+. "$DIR/.zshrc-aliases.sh"
+. "$DIR/.zshrc-launchers.sh"
+. "$DIR/.zshrc-keys.sh"
