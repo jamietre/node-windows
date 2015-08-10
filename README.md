@@ -262,15 +262,15 @@ Make sense?
 
 ####Important npm concepts
 
-*Installing globally doesn't mean you share package dependencies among projects.* It means you are installing an executable command that should be available in your path, such as `npm` or `grunt`. Don't install things globally unless you know why you're doing it. 
+*Installing globally doesn't mean you share package dependencies among projects.* It means you are installing an executable command that should be available in your path, such as `npm` or `grunt`. For the most part, you will only need to install general-purpose tools globally; simple package dependencies should just be installed normally. So unless the installation instructions for a thing say to install globally, don't.
 
 ####Basic things you will do with npm:
 
-*`npm install packagename` - install a package to the project in the current directory
-*`npm install -g gulp` - install something globally.
-*`npm remove packagename` - uninstall a package
-*`npm init` - configure `package.json` in the current folder, will populate with everything currently installed.
-*`npm --version` - what version of npm am I running?
+* `npm install packagename` - install a package to the project in the current directory
+* `npm install -g gulp` - install something globally.
+* `npm remove packagename` - uninstall a package
+* `npm init` - configure `package.json` in the current folder, will populate with everything currently installed.
+* `npm --version` - what version of npm am I running?
 
 *TODO -- much more*
 
