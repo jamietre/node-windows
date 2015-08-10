@@ -94,10 +94,6 @@ See "Zsh Extras" below for more details.
 
 Just [download](https://nodejs.org/download/) and run the correct system installer (32 or 64 bit MSI, probably 64).
 
-#####Install NPM globally
-
-	> npm install -g npm
- 
 #####Fix NPM path
 
 In most cases you need to correct your path so `c:\Users\{username}\AppData\npm` is before `c:\Program Files\nodejs`. If not corrected, the version of NPM that is installed when you installed Node will always supersede updates that you later install. [Click here](https://github.com/npm/npm/wiki/Troubleshooting#upgrading-on-windows) for more information about this.
