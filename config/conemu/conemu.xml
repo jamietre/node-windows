@@ -183,7 +183,7 @@
 			<value name="SetDefaultTerminal" type="hex" data="01"/>
 			<value name="SetDefaultTerminalStartup" type="hex" data="00"/>
 			<value name="SetDefaultTerminalStartupTSA" type="hex" data="00"/>
-			<value name="DefaultTerminalAgressive" type="hex" data="01"/>
+			<value name="DefaultTerminalAgressive" type="hex" data="00"/>
 			<value name="DefaultTerminalNoInjects" type="hex" data="00"/>
 			<value name="DefaultTerminalNewWindow" type="hex" data="00"/>
 			<value name="DefaultTerminalConfirm" type="hex" data="01"/>
