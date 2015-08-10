@@ -55,7 +55,7 @@ You will need to add a profile for the babun shell. If you like, you can just im
 	* Name: Babun
 	* Check "Default task for new console" and "Default shell"
 	* Task Parameters: `/icon "%userprofile%\.babun\cygwin\bin\mintty.exe" /dir "%userprofile%" `
-	* Commands: `"%userprofile%\.babun\cygwin\bin\mintty.exe -d"`
+	* Commands: `"%userprofile%\.babun\cygwin\bin\mintty.exe" -d`
 
 (Note: `-d` is only needed for mintty 3.2.1 -- remove this when next ver is released. See "Problems" below for details.)
 
