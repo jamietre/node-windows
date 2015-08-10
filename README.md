@@ -67,7 +67,7 @@ Launch ConEmu by clicking the icon. The first time you run Babun it may take a m
 
 Babun updates some stuff automatically, but it doesn't automatically update the Cygwin tools. For the most part this doesn't matter, but you do want to make sure your `git` client is up to date:
 
-    > pact upate git
+    > pact update git
 
 Now that you've got git on your computer, I suggest you clone this repo too, so you can easily access the files and maybe make changes and improve it too:
  
