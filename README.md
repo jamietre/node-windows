@@ -55,9 +55,7 @@ You will need to add a profile for the babun shell. If you like, you can just im
 	* Name: Babun
 	* Check "Default task for new console" and "Default shell"
 	* Task Parameters: `/icon "%userprofile%\.babun\cygwin\bin\mintty.exe" /dir "%userprofile%" `
-	* Commands: `"%userprofile%\.babun\cygwin\bin\mintty.exe" -d`
-
-(Note: `-d` is only needed for mintty 3.2.1 -- remove this when next ver is released. See "Problems" below for details.)
+	* Commands: `"%userprofile%\.babun\cygwin\bin\mintty.exe"`
 
 ![](./images/conemu-settings.png)
 
@@ -147,7 +145,7 @@ For the most part, all these tools are well used and you can find good tutorials
 
 Cygwin is a collection of linux/unix tools compiled to run on Windows, including things that you can't live without like `git`. It also has lots of things that maybe you can live without, but you'll wonder why you did once you get used to them, like, `grep` and `which`.  
 
-Cygwin is installed by Babun automatically, you probably don't need to think about it too much. But you can use the Cygwin installer to update everything if you don't want to use the pact tool to update individual packages:
+Cygwin is installed by Babun automatically, you probably don't need to think about it too much. But you can use the Cygwin installer to update everything if you don't want to use the pact tool to update individual packages. If you have any trouble with a command-line tool, this is probably the first thing to try.
 
 * Run the [cygwin installer.](http://cygwin.com/setup-x86.exe)
 * Change the default directory to `C:\Users\{username}\.babun\cygwin` -- this is where Babun installs Cygwin
@@ -276,9 +274,9 @@ Make sense?
 
 ##Problems
 
-**There are issues with mintty 2.1.3 and ConEmu,** see [this](https://github.com/Maximus5/ConEmu/issues/239). Probably will be fixed in next mintty release. A workaround is to add -d to the invocation for mintty in ConEmu:
+**There are issues with mintty 2.1.3 and ConEmu,** see [this](https://github.com/Maximus5/ConEmu/issues/239). ~~Probably will be~~ Was fixed in  mintty 2.1.4. In 2.1.3 only you can workaround by adding -d to the invocation for mintty in ConEmu: `"%userprofile%\.babun\cygwin\bin\mintty.exe" -d` .
 
-* Commands: `"%userprofile%\.babun\cygwin\bin\mintty.exe" -d`
+If you have a problem with the console docking in Conemu, most likely you can fix it by updating mintty: `pact update mintty`
 
 **If you get a strange error dialog when launching Windows Explorer** from the command line, disable *aggressive mode* in ConEmu Settings -> Integration -> Default Term
 
