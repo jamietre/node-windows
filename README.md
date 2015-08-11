@@ -1,6 +1,8 @@
 #Overview
 ###What is this?
 
+[![Join the chat at https://gitter.im/jamietre/node-windows](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jamietre/node-windows?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A living document to help you set up an effective Windows-based environment for working with Node.js, and more generally, from a unix-like command line.
 
 Using Node and NPM is a bit of a challenge with Windows. This is for a number of reasons, but most of them have to do with the lack of good information about how to configure your environment correctly. This document hopes to provide a resource to address this void and solve some of these problems, as well as helping you find best-in-class tools and techniques for use in your own environment.
