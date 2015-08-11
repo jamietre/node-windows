@@ -126,7 +126,11 @@ Note that once you've installed npm globally, to update it, you need to remove i
     > npm remove -g npm
     > npm install -g npm@3.2.1
 
-That's all. 
+#####Configuring NPM
+
+I find it useful to see output when NPM is installing things, especially to the extent that we are using beta software, it's nice to see what's happening:
+
+    > npm set loglevel=http 
 
 ##Other Useful Things
 
