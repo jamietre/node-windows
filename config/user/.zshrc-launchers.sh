@@ -23,43 +23,47 @@ _launcher_sublime=('/c/Program Files/Sublime Text 3/sublime_text.exe' '"$_path"'
 _launcher_markdown=('/c/Program Files (x86)/MarkdownPad 2/MarkdownPad2.exe' '"$_path" >/dev/null' true false)
 _launcher_vs=('/c/Program Files (x86)/Microsoft Visual Studio 12.0/Common7/IDE/devenv.exe' '/edit "$_path"' false false)
 _launcher_explorer=('/c/windows/system32/explorer.exe' '/e, "$_path"' false false)
+_launcher_chrome=('/c/Program Files (x86)/Google/Chrome/Application/chrome.exe' '$3' false true)
 
-# set up any special aliases you want here; our defaults "edit" selects based on extension, and "st" always uses 
-# sublime text.
+# set up function to launch your preferred tool here. the function should call _edit_select with up to 
+# 2 parameters: 
+# $1 the path to be mapped to windows
+# $2 the name of the launcher, maps to _launcher_xxxxx
+# You are welcome to pass other parameters through as in the chrome launcher; we use the 3rd 
+# parameter to map all the options to the basic launcher spec
 
-alias edit=_edit
-alias st=_edit_sublime 
-alias notepad=_edit_notepad
-alias md=_edit_markdown
-alias vs=_edit_vs
-alias ex=_explorer
-
-# if you want an alias to always choose an editor, add a method below for it
-
-_edit_sublime() {
+st() {
 	_edit_select "$1" "sublime"
 }
 
-_edit_notepad() {
+notepad() {
 	_edit_select "$1" "notepad"
 }
 
-_edit_markdown() {
+md() {
 	_edit_select "$1" "markdown"
 }
 
-_edit_vs() {
+vs() {
 	_edit_select "$1" "vs"
+}
+
+ex() {
+	_edit_select "${1:-.}" "explorer"
+}
+
+chrome-debugger() {
+	_edit_select "~" "chrome" "--remote-debugging-port=9222 --user-data-dir=\"$(cygpath -w -a $HOME)\\.chrome\" $1"
+}
+
+chrome () {
+	_edit_select "~" "chrome" "$1"
 }
 
 # You shouldn't have to change anything here.
 
-_edit() {
+edit() {
 	_edit_select "$1" ""
-}
-
-_explorer() {
-	_edit_select "${1:-.}" "explorer"
 }
 
 _mappath() {
@@ -81,10 +85,10 @@ _edit_select() {
 	local cmd
 
 	 _path=$(_mappath ${1})
-	filename=$(basename "$_path")
-	extension="${filename##*.}" 
 
 	if [ -z "$2" ]; then
+		filename=$(basename "$_path")
+		extension="${filename##*.}" 
    		_launcher_var=_launcher_${_editors[$extension]-${_editors[default]}}
 	else
 		_launcher_var=_launcher_$2
@@ -92,24 +96,21 @@ _edit_select() {
 
 	launcher=(${(P)_launcher_var})
   
-  if [ ! -f ${launcher[1]} ]; then
-  	echo "selected launcher \"${launcher[1]}\" was not found; using notepad instead. suggest you check out ~/.zshrc-launchers.sh"
-  	 launcher=(${_launcher_notepad})
-  fi
+	if [ ! -f ${launcher[1]} ]; then
+		echo "selected launcher \"${launcher[1]}\" was not found; using notepad instead. suggest you check out ~/.zshrc-launchers.sh"
+		 launcher=(${_launcher_notepad})
+	fi
 
-  if [ ${launcher[3]}==true ] ; then
-	_create_if_missing "$1"
-  fi
+	if [ ${launcher[3]}==true ] ; then
+		_create_if_missing "$1"
+	fi
   
-   cmd="\"${launcher[1]}\" ${(e)launcher[2]}"
-  #echo $cmd
+	cmd="\"${launcher[1]}\" ${(e)launcher[2]}"
+  	#echo $cmd
 
-  if [ ${launcher[4]}==true ] ; then
-  	eval "($cmd &) &> /dev/null "
-  else
+	if [ ${launcher[4]}==true ] ; then
+  		eval "($cmd &) &> /dev/null "
+	else
   	eval $cmd
   fi
 }
-
-
-
