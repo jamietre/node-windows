@@ -155,6 +155,16 @@ Cygwin is installed by Babun automatically, you probably don't need to think abo
 * Change the default directory to `C:\Users\{username}\.babun\cygwin` -- this is where Babun installs Cygwin
 * Click "Next" until it starts. Since you pointed to an existing Cygwin installation, the default behavior is just to update everything. Just let it do it's thing with default options.  
 
+#####Internet Utilities
+
+Cygwin includes implementations of standard command line tools like `telnet`, `ssh` and so on. These are not installed by default, but come in handy a lot, e.g. to test if chrome is running with remote debugging enabled:
+
+    > telnet locahost 9222
+   
+To install the Cygwin internet toolset via Babun, just type:
+
+    > pact install inetutils
+
 *TODO - this section is far from complete*
 * basic commands (ls, grep, etc)
 
