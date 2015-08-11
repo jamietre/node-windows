@@ -247,12 +247,16 @@ You will probably need to adjust this for your specific toolset, but configurati
 * `edit filename.ext` - launch a configured editor based on file extension:
 * `md filename` - open always with markdown editor
 * `st filename` - open always with sublime text
+	* `st .` - open the current folder with sublime text
 * `notepad filename` - open always with notepad
 * `vs filename` - open always with Visual Studio
 * `ex` - launch windows explorer from the current directory
-* `ex target` - launch windows explorer in the specified directory:
 	* `ex ~` will explore your home directory
 	* `ex $PROGRAMFILES` will explore `c:\program files (x86)`
+	* 
+* `chrome index.html` - launch chrome and display `index.html` in the current folder from the filesystem
+	* `chrome http://www.xkcd.com` - open chrome to the specified URL
+	* `chrome-debugger http://localhost/app` - open chrome with remote debugging enabled on port 9222, using a profile home in `~/.chrome` (different from your Windows default Chrome profile)
 
 The default config uses Markdown Pad for `.md` files, Visual Studio for `.js` and `.json`, and Sublime Text for anything else. 
 
