@@ -245,14 +245,14 @@ most things work as you expect. See [this post](http://stackoverflow.com/questio
 You will probably need to adjust this for your specific toolset, but configuration is trivial in `~/.zshrc-launchers.sh`
 
 * `edit filename.ext` - launch a configured editor based on file extension:
-* `md filename` - open always with markdown editor
-* `st filename` - open always with sublime text
+* `markdown filename` - open always with markdown editor
+* `sublime filename` - open always with sublime text
 	* `st .` - open the current folder with sublime text
 * `notepad filename` - open always with notepad
 * `vs filename` - open always with Visual Studio
-* `ex` - launch windows explorer from the current directory
-	* `ex ~` will explore your home directory
-	* `ex $PROGRAMFILES` will explore `c:\program files (x86)`
+* `explore` - launch windows explorer from the current directory
+	* `explore ~` will explore your home directory
+	* `explore $PROGRAMFILES` will explore `c:\program files (x86)`
 	* 
 * `chrome index.html` - launch chrome and display `index.html` in the current folder from the filesystem
 	* `chrome http://www.xkcd.com` - open chrome to the specified URL
