@@ -298,6 +298,8 @@ If you have a problem with the console docking in Conemu, most likely you can fi
 
 **If you get a strange error dialog when launching Windows Explorer** from the command line, disable *aggressive mode* in ConEmu Settings -> Integration -> Default Term
 
+**Conflicting version of git/git bash** -- you may have Git installed separately, as a result of installing Git for Windows previously, or as installed by something that depends on it. Most likely this will be found e.g. under 'c:\Program Files (x86)\git\bin`. If this is on your path, it could cause issues with Cygwin, because of conflicting versions of the command line utilities (git included).
 
+It's recommended that you remove `c:\Program Files (x86)\git\bin` from your path, and add to the **user variables** PATH your cygwin bin folder, e.g. `c:\users\{username}\.babun\cygwin\bin;`
 
 
