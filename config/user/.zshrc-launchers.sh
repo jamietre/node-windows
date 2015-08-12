@@ -9,7 +9,6 @@ declare -A _editors
 _editors[default]=sublime
 _editors[md]=markdown
 _editors[js]=vs
-_editors[json]=vs
 
 # define each editor as an array (space-separated strings)
 #
@@ -18,11 +17,11 @@ _editors[json]=vs
 # 3: true|false: create a file if it's missing.
 # 4: true|false: spawn new process
 
-_launcher_notepad=('/c/Windows/system32/notepad.exe' '"$_path"' true true)
-_launcher_sublime=('/c/Program Files/Sublime Text 3/sublime_text.exe' '"$_path"' false false)
-_launcher_markdown=('/c/Program Files (x86)/MarkdownPad 2/MarkdownPad2.exe' '"$_path" >/dev/null' true false)
-_launcher_vs=('/c/Program Files (x86)/Microsoft Visual Studio 12.0/Common7/IDE/devenv.exe' '/edit "$_path"' false false)
-_launcher_explorer=('/c/windows/system32/explorer.exe' '/e, "$_path"' false false)
+_launcher_notepad=('/c/Windows/system32/notepad.exe' '$_path' true true)
+_launcher_sublime=('/c/Program Files/Sublime Text 3/sublime_text.exe' '$_path' false false)
+_launcher_markdown=('/c/Program Files (x86)/MarkdownPad 2/MarkdownPad2.exe' '$_path >/dev/null' true false)
+_launcher_vs=('/c/Program Files (x86)/Microsoft Visual Studio 12.0/Common7/IDE/devenv.exe' '/edit $_path' false false)
+_launcher_explorer=('/c/windows/system32/explorer.exe' '/e, $_path' false false)
 _launcher_chrome=('/c/Program Files (x86)/Google/Chrome/Application/chrome.exe' '$3' false true)
 
 # set up function to launch your preferred tool here. the function should call _edit_select with up to 
@@ -32,7 +31,7 @@ _launcher_chrome=('/c/Program Files (x86)/Google/Chrome/Application/chrome.exe' 
 # You are welcome to pass other parameters through as in the chrome launcher; we use the 3rd 
 # parameter to map all the options to the basic launcher spec
 
-st() {
+sublime() {
 	_edit_select "$1" "sublime"
 }
 
@@ -40,7 +39,7 @@ notepad() {
 	_edit_select "$1" "notepad"
 }
 
-md() {
+markdown() {
 	_edit_select "$1" "markdown"
 }
 
@@ -48,7 +47,7 @@ vs() {
 	_edit_select "$1" "vs"
 }
 
-ex() {
+explore() {
 	_edit_select "${1:-.}" "explorer"
 }
 
@@ -67,12 +66,14 @@ edit() {
 }
 
 _mappath() {
-	cygpath -w -a $1
+	if [ -n "$1" ]; then
+	   cygpath -w -a "$1"
+	fi
 }
 
 
 _create_if_missing() {
-	if [ ! -f "$1" ]; then
+	if [ -n "$1" ] && [ ! -f "$1" ]; then
 	   touch "$1"
 	fi
 }
@@ -84,7 +85,10 @@ _edit_select() {
 	local launcher
 	local cmd
 
-	 _path=$(_mappath ${1})
+	_path=$(_mappath ${1})
+	if [ -n "$_path" ]; then
+		_path=\"$_path\"
+	fi
 
 	if [ -z "$2" ]; then
 		filename=$(basename "$_path")
