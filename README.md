@@ -246,8 +246,8 @@ You will probably need to adjust this for your specific toolset, but configurati
 
 * `edit filename.ext` - launch a configured editor based on file extension:
 * `markdown filename` - open always with markdown editor
-* `sublime filename` - open always with sublime text
-	* `st .` - open the current folder with sublime text
+* `subl filename` - open always with sublime text
+	* `subl .` - open the current folder with sublime text
 * `notepad filename` - open always with notepad
 * `vs filename` - open always with Visual Studio
 * `explore` - launch windows explorer from the current directory
