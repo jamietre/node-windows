@@ -8,7 +8,7 @@ declare -A _editors
 
 _editors[default]=sublime
 _editors[md]=markdown
-_editors[js]=vs
+_editors[js]=sublime
 
 # define each editor as an array (space-separated strings)
 #
@@ -18,7 +18,7 @@ _editors[js]=vs
 # 4: true|false: spawn new process
 
 _launcher_notepad=('/c/Windows/system32/notepad.exe' '$_path' true true)
-_launcher_sublime=('/c/Program Files/Sublime Text 3/sublime_text.exe' '$_path' false false)
+_launcher_sublime=('/c/Program Files/Sublime Text 3/subl.exe' '$_path' false false)
 _launcher_markdown=('/c/Program Files (x86)/MarkdownPad 2/MarkdownPad2.exe' '$_path >/dev/null' true false)
 _launcher_vs=('/c/Program Files (x86)/Microsoft Visual Studio 12.0/Common7/IDE/devenv.exe' '/edit $_path' false false)
 _launcher_explorer=('/c/windows/system32/explorer.exe' '/e, $_path' false false)
@@ -31,7 +31,7 @@ _launcher_chrome=('/c/Program Files (x86)/Google/Chrome/Application/chrome.exe' 
 # You are welcome to pass other parameters through as in the chrome launcher; we use the 3rd 
 # parameter to map all the options to the basic launcher spec
 
-sublime() {
+subl() {
 	_edit_select "$1" "sublime"
 }
 
