@@ -302,4 +302,4 @@ If you have a problem with the console docking in Conemu, most likely you can fi
 
 It's recommended that you remove `c:\Program Files (x86)\git\bin` from your path, and add to the **user variables** PATH your cygwin bin folder, e.g. `c:\users\{username}\.babun\cygwin\bin;`
 
-
+**Using ~ in paths passed to  npm** -- It doesn't work. `~` maps to `c:\home\{username}` instead of the actual Cygwin home of `C:\Users\{username}\.babun\cygwin\home\{username}` or wherever. Seems like this should be fixable; problem is that invoking Windows things from cygwin doesn't do path remapping. We can create an alias (probably) that just `cygpath`'s first.
