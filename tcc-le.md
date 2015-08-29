@@ -43,5 +43,9 @@ You can create aliases for any number of things, like presetting options on comm
 
 Note that TCC is not smart enough to not search aliases when executing commands; in bash you could just say `alias ls=ls --color=auto`. By using `ls.exe` I avoid a self referential issue. 
 
+###Colors
 
-  
+Sometimes the ansi color scheme gets messed up. This will reset it:
+
+    color 07
+
