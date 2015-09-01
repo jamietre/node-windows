@@ -13,7 +13,7 @@ The biggest challenge is the lack of good information about how to configure you
 1. [Get your environment set up](./environment.md). The hardest part with windows is just getting everything working. Learn about replacements for the DOS shell, and getting node, git and npm set up.
 2. Editors (todo)
 2. [Using npm](./npm.md). A basic rundown of npm. 
-3. [Using npm](./npm.md). Git configuration and common scenarios. 
+3. [Using git](./git.md). Git configuration and common scenarios. 
 4. [Set up a Linux VM](./linux-vm.md). Sometimes it just won't work on windows; this will guide you through setting up a nearly transparent Linux VM with Vagrant and VirtualBox
 5. [Debugging Node with Node Inspector](./node-inspector.md). A simple way to debug node.js apps using the Chromium debugger.
 6. Sinopia (todo)
