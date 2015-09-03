@@ -11,7 +11,7 @@ Run the following commands from a shell:
     vagrant up
     ssh vagrant
 
-There, you're in a linux machine. `/vagrant` points to the location where did this.
+There, you're in a linux machine. `/vagrant` points to the location where you did this.
 
 #####What happens
 

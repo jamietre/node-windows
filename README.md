@@ -16,6 +16,7 @@ The biggest challenge is the lack of good information about how to configure you
 3. [Using git](./git.md). Git configuration and common scenarios. 
 4. [Set up a Linux VM](./linux-vm.md). Sometimes it just won't work on windows; this will guide you through setting up a nearly transparent Linux VM with Vagrant and VirtualBox
 5. [Debugging Node with Node Inspector](./node-inspector.md). A simple way to debug node.js apps using the Chromium debugger.
+6. [Editors](./editors.md). Get set up with good tools for editing files.. other than Visual Studio.
 6. Sinopia (todo)
 7. TCC plugins (todo)
 
