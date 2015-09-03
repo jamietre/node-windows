@@ -2,7 +2,8 @@
 
 Sometimes it's just easier to do it on linux. With Vagrant it is trivially easy.
 
-First, install [Vagrant](https://www.vagrantup.com/downloads.html). You need to have VirtualBox installed as well.
+If you don't have [VirtualBox](https://www.virtualbox.org/wiki/Downloads) installed, download & install it first.
+Next install [Vagrant](https://www.vagrantup.com/downloads.html).
 
 Run the following commands from a shell:
 
