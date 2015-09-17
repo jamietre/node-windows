@@ -16,6 +16,7 @@ One of the things I mention a lot is "unix command line tools." If you are a Win
 These are all standard unix tools so don't use this as an authoritative reference.,
 
 * `vi` - editor
+
 * `ls` - list directory contents. By default, files starting with `.` are hidden.
 	* `ls -lAh` - show all files, sizes in human-readable format, with details (one file per line)
 * `which` - display path to a file found in your path
@@ -32,7 +33,3 @@ These are all standard unix tools so don't use this as an authoritative referenc
 	* `alias ls="ls -Ah"` - npw `ls` always shows all files and sizes in human-readable format  
 * `set` - show all evironment variables
 * `unset name` - clear an environment variable `name`
-
-
-
-

@@ -9,14 +9,12 @@ The  file `tcmd.ini` in the folder from which TCC/LE launches, usually `C:\Progr
 
 These are typically managed from the TCC (paid edition) UI so online documentation is a difficult find, but here is a useful configuration:
 
-
 	[4NT]
 	EditMode=Insert
 	UnixPaths=Yes
 	AppendToDir=Yes
 	CursorIns=15
 	CursorOver=100
-	PathExt=Yes
 	AutoCancel=Yes
 	DirJunctions=Yes
 
@@ -25,15 +23,24 @@ These are typically managed from the TCC (paid edition) UI so online documentati
 * *AppendToDir* adds a backslash when autocompleting a folder name
 * *CursorIns* is the percentage width for the cursor while in insert mode (15% is basically a vertical bar)
 * *CursorOver* is the percentage width for the cursor while in overstrike mode (100% is a block)
-* [*PathExt*](http://jpsoft.com/help/inistartupdlg.htm) is a boolean which, when enabled, causes TCC to look at the [`PATHEXT`](http://jpsoft.com/help/pathext.htm) environment variable, which is a semicolon-delimited list of file extensions (including the dot), and search for any file matching any extension on this list.
 * *AutoCancel* will allow you to break a script with CTRL+C without the annoying "Do you want to stop this batch file?" prompt.
 * *DirJunctions* - [TODO] not sure... I went out of my way to add this but can't find reference now
 
-###Startup File
+Some other options you might want:
 
-The `tcstart.btm` file is supposed to be run automatically if found in your home directory or the application startup folder. This appears to be a TCC paid feature since it didn't seem to work for me; no matter, just change your ConEmu task profile:
+	PathExt=Yes
 
-    "%ConEmuDir%\..\JPSoft\TCCLE14x64\tcc.exe" "%HOMEDRIVE%%HOMEPATH%\tcstart.btm"
+[*PathExt*](http://jpsoft.com/help/inistartupdlg.htm) is a boolean which, when enabled, causes TCC to look at the [`PATHEXT`](http://jpsoft.com/help/pathext.htm) environment variable, which is a semicolon-delimited list of file extensions (including the dot), and search for any file matching any extension on this list.
+    
+Note than when using PathExt, by default, `.BTM` files will probably not be considered executable, and some default behavior (such as running the startup file `tcstart.btm`, below) will not work. [See this](http://jpsoft.com/help/pathext.htm) for more information.
+
+    TCStartPath=D:\Somewhere
+
+[*TCStartPath*](http://jpsoft.com/help/cmdlineopts.htm) defines an alternate location for look for startup files.
+
+###Startup and Exit File
+
+The `tcstart.btm` file will be run automatically if found in your home directory or the application startup folder.  Likewise, the `tcexit.btm` file will be run when leaving a shell in the same circumstances.
 
 ###Aliases
 
@@ -48,4 +55,6 @@ Note that TCC is not smart enough to not search aliases when executing commands;
 Sometimes the ansi color scheme gets messed up. This will reset it:
 
     color 07
+
+
 

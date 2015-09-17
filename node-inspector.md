@@ -2,7 +2,13 @@
 
 Debugging nodeJS is necessary. You can also debug already-running processes, which is very helpful when working with 3rd party stuff.
 
-#####To debug a node.js app
+#####To debug a node.js app in one step
+
+    >node-debug index.js
+
+This will start node inspector, launch your default browser to the debugger URL, and start the app with `--debug-brk`.
+
+#####To manually start the debugger and attach it your app:
 
 Start node-inspector:
 
@@ -10,13 +16,13 @@ Start node-inspector:
     Node Inspector v0.12.2
     Visit http://127.0.0.1:8080/?ws=127.0.0.1:8080&port=5858 to start debugging.
 
-Now start your node app with the `--debug-brk` flag:
+Now start your node app with the `--debug-brk` flag, most likely from another CLI:
 
     node --debug-brk index.js
 
-Now just point your browser to the URL you got from node-inspector. It will be paused on the first line; click play to start debugging.
+Finally, point your browser to the URL you got from node-inspector. It will be paused on the first line; click play to start debugging.
  
-#####To attach to an existing process
+#####To attach the debugger to an existing process
 
 To debug an already-running node process, first get the PID of your process
 
