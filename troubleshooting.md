@@ -10,3 +10,16 @@ These are a few things that have come up that are specific to windows:
     which git
 
 to see where `git` is being loaded from; if it's not what you expect, delete it.
+
+**Certificate error accessing remote git repo**:
+
+    fatal: unable to access 'https://github.com/{user}/node-windows.git/': 
+    error setting certificate verify locations:
+        CAfile: C:/Program Files/Git/mingw64/libexe/ssl/certs/ca-bundle.crt
+        CApath: none
+
+(or something) -- just fix the CA path:
+
+    git config --system http.sslcainfo "c:\program files\git\mingw64\ssl\certs\ca-bundle.crt"
+
+This could be specific to your git installation, verify the path to ca-bundle.crt first.
