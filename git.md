@@ -55,8 +55,19 @@ For example:
 
     http://devgitserver:8080/tfs/OurCollection/OurProject/_git/awesome-widget
 
+To create a new repo from TFS Git, go to the version control tab on the admin page: 
+
+    http://[server]/tfs/[collection]/[project]/_admin/_versioncontrol
+
+Click "New Repository." Then clone it:
+
+   git clone http://[server]/tfs/[collection]/[project]/_git/[repository]
+
+.. now go to it. Either move your existing code into the folder `[repository]` that has been created, or do `git init` to get started.
+
 
 ###Basic Git Tasks
+
 
 ####Initialize a new repo
 
