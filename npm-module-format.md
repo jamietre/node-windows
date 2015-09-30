@@ -10,6 +10,7 @@ Each module should include at a minim the following npm scripts:
 * `prepublish`: should, [by convention](https://github.com/npm/npm/issues/3059), invoke the build script, most likely just as `npm run build`,, and possibly other tasks required before publication
 * `test`: should run all unit tests
 * `pretest`: should run prerequisites for unit tests, such as jshint
+* `preversion`: should run `npm build & npm test` (at least). This is invoked when using `npm version` to bump versions; this command also has git tag integration and we should formally adopt it as the mechanism for incrementing versions.
 
 If a pre-event script fails, sich as `pretest`, the actual script invoked will not run. Therefore, if `pretest` runs linting, then running `npm test` will not run the actual tests if linting fails, 
 
