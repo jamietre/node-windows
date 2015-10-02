@@ -40,7 +40,7 @@ If this is the first time you have run this particular VM you probably need to s
 
 Git seems to be a bit behind in the default Ubuntu repository; you can add it from a better-maintained source as follows:
 
-    sudo apt-get-repository ppa:http://ppa.launchpad.net/git-core/ppa/ubuntu
+    sudo apt-add-repository ppa:http://ppa.launchpad.net/git-core/ppa/ubuntu
     sudo apt-get update
     sudo apt-get install git
 
