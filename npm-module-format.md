@@ -4,12 +4,12 @@ This is an overview of best practices for structuring NPM modules. We propose th
 
 #####Script configuration
 
-Each module should include at a minim the following npm scripts:
+Each module should include at a minimum the following npm scripts:
 
-* `build`: should cause the module to be built completely such that it can be used by an ECMA5-only capable consumer.
-* `prepublish`: should, [by convention](https://github.com/npm/npm/issues/3059), invoke the build script, most likely just as `npm run build`,, and possibly other tasks required before publication
+* `build`: should cause the module to be built completely such that it can be used by an ECMA5-only capable consumer. Note that *build* is not a predefined script hook so it must be invoked with `npm run build`.
+* `prepublish`: should, [by convention](https://github.com/npm/npm/issues/3059), invoke the build script, most likely just as `npm run build`, and possibly other tasks required before publication
 * `test`: should run all unit tests
-* `pretest`: should run prerequisites for unit tests, such as jshint
+* `pretest`: should run prerequisites for unit tests, typically as `jshint`.
 
 If a pre-event script fails, sich as `pretest`, the actual script invoked will not run. Therefore, if `pretest` runs linting, then running `npm test` will not run the actual tests if linting fails, 
 
