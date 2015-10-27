@@ -1,15 +1,17 @@
-##NPM Module Format
+## NPM Module Format
 
 This is an overview of best practices for structuring NPM modules. We propose the following:
 
-#####Script configuration
+##### Script configuration
 
-Each module should include at a minimum the following npm scripts:
+Each module should include at a minimum the following npm scripts. `build`, `lint` and `format` are conventions we use 
 
 * `build`: should cause the module to be built completely such that it can be used by an ECMA5-only capable consumer. Note that *build* is not a predefined script hook so it must be invoked with `npm run build`.
 * `prepublish`: should, [by convention](https://github.com/npm/npm/issues/3059), invoke the build script, most likely just as `npm run build`, and possibly other tasks required before publication
-* `test`: should run all unit tests
-* `pretest`: should run prerequisites for unit tests, typically as `jshint`.
+* `test`: should run all unit tests, only if linting succeeds
+* `pretest`: should run prerequisites for unit tests, typically as `lint`.
+* `lint`: should run only the syntax validation scripts
+* `format`: run scripts to automatically format source files, only if linting succeeds
 
 If a pre-event script fails, sich as `pretest`, the actual script invoked will not run. Therefore, if `pretest` runs linting, then running `npm test` will not run the actual tests if linting fails, 
 

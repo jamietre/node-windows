@@ -1,7 +1,12 @@
 
 ###[TCC/LE](https://jpsoft.com/tccle-cmd-replacement.html) 
 
-TCC/LE is a CMD replacement. It has nice editing/history features, is extensible. It integrates nicely with ConEmu. Here are some basic features:
+TCC/LE is a CMD replacement. It has nice editing/history features, is extensible. It integrates nicely with ConEmu. 
+
+* [ConEmu configuration with TCC](./tcc/conemu.md) - some suggestions for best results when using TCC with ConEmu.
+
+
+Here are some basic features:
 
 ###Configuration
 

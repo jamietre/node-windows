@@ -36,6 +36,28 @@ These steps generally should be done for any Windows configuration with Git.
         git config --global core.editor \
             "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin" 
 
+7. Configure a merge tool
+
+Recommendations:
+
+[P4Merge](http://www.perforce.com/downloads/helix?qt-perforce_downloads_step_3=1#product-10)
+
+
+	git config --global merge.tool p4merge
+
+    git config --global mergetool.p4merge.cmd "\"c:\program files\perforce\p4merge.exe\" \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\""
+
+
+To use the gui to perform merges:
+
+    git mergetool
+
+Sometimes temporary files get left behind after a merge. Run `git status` to see that everything untracked is junk; if so 
+
+    git clean -f
+
+will take care of it.
+
 ###TFS Git
 
 To manage Git repositories in TFS/GIT the web interface seems easiest. Go to:
@@ -87,6 +109,11 @@ After you create a new repo on Github or TFS, it is initially empty. Follow thes
     git commit -m 'New changes'
     git push origin master
 
+#####Tag a version
+
+    git tag v1.0.6
+    git push origin master --tags
+    
 #####Update from remote
 
     git pull

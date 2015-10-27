@@ -1,14 +1,14 @@
-###node-inspector
+### node-inspector
 
 Debugging nodeJS is necessary. You can also debug already-running processes, which is very helpful when working with 3rd party stuff.
 
-#####To debug a node.js app in one step
+##### To debug a node.js app in one step
 
     >node-debug index.js
 
 This will start node inspector, launch your default browser to the debugger URL, and start the app with `--debug-brk`.
 
-#####To manually start the debugger and attach it your app:
+##### To manually start the debugger and attach it your app:
 
 Start node-inspector:
 
@@ -22,7 +22,7 @@ Now start your node app with the `--debug-brk` flag, most likely from another CL
 
 Finally, point your browser to the URL you got from node-inspector. It will be paused on the first line; click play to start debugging.
  
-#####To attach the debugger to an existing process
+##### To attach the debugger to an existing process
 
 To debug an already-running node process, first get the PID of your process
 
@@ -39,4 +39,10 @@ where PID is the PID you got from tasklist. Now you can start node-inspector:
 
 and browse to the URL it provides.
 
+
+##### Debugging mocha
+
+Mocha by default starts a new process, but you can still debug using this special entry point:
+
+    > node-debug _mocha
 

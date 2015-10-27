@@ -1,15 +1,15 @@
-###Environment
+### Environment
 
 This section discusses the command line environment and options other than the DOS shell. You can also use Powershell which is much improved, and fully supports Node.  However, this guide is oriented more towards shells that provide a unix-like environment, so we don't specifically discuss Powershell. Because most reference work related to node.js assumes you are using a bash shell, with unix-like shell commands, we'll work towards getting something like that functional in Windows. 
 
 
-#Quick Start
+# Quick Start
 
 I'll discuss all these components in more detail (TODO), but I suggest you just walk through the quick install to get your system set up. If you already have some components installed, such as Node, please read the instructions anyway for additional configuration you might need to do.
 
 * Download & install [TCC/LE](https://jpsoft.com/tccle-cmd-replacement.html)
 
-##[Git for Windows](https://git-for-windows.github.io/) -- [github](https://github.com/git-for-windows) 
+## [Git for Windows](https://git-for-windows.github.io/) -- [github](https://github.com/git-for-windows) 
 
 The first thing is to install git. Git for windows isn't just the actual `git` program, it also includes a complete unix-like shell (msysgit) which gives you a suite of Unix command-line tools to augment the DOS toolset.
 
@@ -47,13 +47,13 @@ Technically, CygWin is not compatible with node. While most of the time it works
 You can also use the git bash mintty console that comes with Git for Windows. A lot of people are perfectly happy with this. It is better than the DOS shell, but not a lot. It doesn't support editing of command lines.
 
 
-##[ConEmu](http://www.fosshub.com/ConEmu.html) - [github](https://github.com/Maximus5/ConEmu)
+## [ConEmu](http://www.fosshub.com/ConEmu.html) - [github](https://github.com/Maximus5/ConEmu)
 
 ConEmu is a console manager. This is different from a console or a shell; it provides GUI management of your shells and adds UI integration features. It provides a tabs for managing multiple active shells, and some other nice interaction with Windows such as clipboard support, resizing, font selection, and so on. You can also use it to automatically invoke your favorite shell by default whenever some other app asks for a shell.  
 
 If you have installed Git and TCC before you install ConEmu, it will automatically be aware of them.
 	
-#####Install ConEmu
+##### Install ConEmu
 
 * Download & run [ConEmu Preview Installer (32-bit, 64-bit)](http://www.fosshub.com/ConEmu.html)
 *  On first run, I suggest you choose "Enable automatic updates" and select "Preview" (so-called "stable" updates are rare). You can leave everything else.
@@ -61,16 +61,16 @@ If you have installed Git and TCC before you install ConEmu, it will automatical
 
 When you are done, launch ConEmu by clicking the icon. From the options, choose "Startup" and select "Specified Named Task," and choose "{TCC}". Now, ConEmu will open a TCC shell by default.
 
-##Node & NPM
+## Node & NPM
 
 After you've got your shell up and running it's time to install nodejs.
 
 
-#####Install correct platform version of [Node.js](https://nodejs.org/)
+##### Install correct platform version of [Node.js](https://nodejs.org/)
 
 Just [download](https://nodejs.org/download/) and run the correct system installer (32 or 64 bit MSI, probably 64).
 
-#####Fix NPM path
+##### Fix NPM path
 
 In most cases you need to correct your path so `c:\Users\{username}\AppData\npm` is before `c:\Program Files\nodejs`. If not corrected, the version of NPM that is installed when you installed Node will always supersede updates that you later install. [Click here](https://github.com/npm/npm/wiki/Troubleshooting#upgrading-on-windows) for more information about this.
 
