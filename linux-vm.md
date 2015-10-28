@@ -28,7 +28,7 @@ The first line `vagrant init` generates a `Vagrantfile` which describes the char
 If this is the first time you have run this particular VM you probably need to set up some basics. Luckily this is a lot easier than Windows. For Ubuntu, just do the following:
 
     #install node
-    curl --silent --location https://deb.nodesource.com/setup_0.12 | sudo bash -
+    curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
 	sudo apt-get update
 	sudo apt-get install --yes nodejs
     #install compilers
