@@ -36,7 +36,7 @@ If this is the first time you have run this particular VM you probably need to s
     #install npm
     sudo npm install -g npm@latest
     #install git 
-    sudo apt-get install git
+    sudo apt-get install --yes git
 
 Git seems to be a bit behind in the default Ubuntu repository; you can add it from a better-maintained source as follows:
 
