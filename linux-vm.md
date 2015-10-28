@@ -42,7 +42,7 @@ Git seems to be a bit behind in the default Ubuntu repository; you can add it fr
 
     sudo apt-add-repository http://ppa.launchpad.net/git-core/ppa/ubuntu
     sudo apt-get update
-    sudo apt-get install git
+    sudo apt-get install --yes --force-yes git
 
 This adds the repo at the URL to your list of allowable package sources; it publishes new versions of git.
 
