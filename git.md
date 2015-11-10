@@ -42,6 +42,7 @@ Recommendations:
 
 [P4Merge](http://www.perforce.com/downloads/helix?qt-perforce_downloads_step_3=1#product-10)
 
+Note: when installing P4Merge, the installer by default includes a whole toolset which you don't want. Uncheck everything except P4 Merge, or you will be asked questions that don't make sense during installation.
 
 	git config --global merge.tool p4merge
 
