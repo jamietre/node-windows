@@ -38,25 +38,26 @@ Notepad++
 
 Recommendations:
 
+##### Set up p4merge as your diff and merge tool
+
 [P4Merge](http://www.perforce.com/downloads/helix?qt-perforce_downloads_step_3=1#product-10)
 
 P4Merge has a nice UI and is pretty easy to use. Note: when installing P4Merge, the installer by default includes a whole toolset which you don't want. Uncheck everything except P4 Merge, or you will be asked questions that don't make sense during installation.
+
+    git config --global merge.tool p4merge
+    git config --global diff.tool p4merge
+
+    git config --global difftool.p4merge.path "\"c:\program files\perforce\p4merge.exe\""
+    git config --global mergetool.p4merge.cmd "\"c:\program files\perforce\p4merge.exe\" \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\""
+
+##### Alternative: Set up kdiff as diff and merge tool
 
 [kdiff](http://kdiff3.sourceforge.net/)
 
 KDiff is open source and powerful, but harder to use.
 
-##### Set up p4merge as your diff and merge tool
-    
-    git config --global merge.tool p4merge
-    git config --global diff.tool p4merge
-
-(or kdiff)
-    
-    git config --global difftool.p4merge.path "\"c:\program files\perforce\p4merge.exe\""
-    git config --global mergetool.p4merge.cmd "\"c:\program files\perforce\p4merge.exe\" \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\""
-
-(or kdiff)
+    git config --global merge.tool kdiff
+    git config --global diff.tool kdiff
 
     git config --global difftool.kdiff3.path "\"C:\Program Files\KDiff3\kdiff3\""
     git config --global mergetool.kdiff3.cmd "\"C:\Program Files\KDiff3\kdiff3" "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED""
