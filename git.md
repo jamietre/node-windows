@@ -1,56 +1,65 @@
-##GIT with Windows Primer
+## GIT with Windows Primer
 
-###Basic Git Client Configuration
+### Basic Git Client Configuration
 
-These steps generally should be done for any Windows configuration with Git. 
+These steps generally should be done for any Windows configuration with Git.  First install Git for Windows 2.5+
 
-1. First install Git for Windows 2.5+
-
-2. Set basic profile information:
+##### Set basic profile information:
 
         git config --global user.name "Buzz Lightyear"
         git config --global user.email "buzzl@nasa.gov"
 
 
-3. Set git to use windows credential store:
+##### Set git to use windows credential store:
 
         git config --global credential.helper wincred
 
-4. Fix firewall issues with git protocol dependencies:
+##### Fix firewall issues with git protocol dependencies:
 
         git config --global url."https://github.com/".insteadOf git@github.com:
         git config --global url."https://".insteadOf git://
 
-5. Turn off auto CR/LF transformations
+##### Turn off auto CR/LF transformations
 
         git config --global core.autcrlf=false
 
-6. Configure an editor
+##### Configure an editor
 	
 	Some git commands launch an editor that is expected to block the process; when the editor exits (after you save changes) the operation will proceed.In windows the format is a little tricky for the path. For example, this will launch Sublime Text 3 and wait for you to close the document:  
 
         git config --global core.editor "'C:/Program Files/Sublime Text 3/subl.exe' -w"
 
-    Notepad++
+Notepad++
 
         git config --global core.editor \
             "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin" 
 
-7. Configure diff & merge tools
+##### Configure diff & merge tools
 
 Recommendations:
 
 [P4Merge](http://www.perforce.com/downloads/helix?qt-perforce_downloads_step_3=1#product-10)
 
-Note: when installing P4Merge, the installer by default includes a whole toolset which you don't want. Uncheck everything except P4 Merge, or you will be asked questions that don't make sense during installation.
+P4Merge has a nice UI and is pretty easy to use. Note: when installing P4Merge, the installer by default includes a whole toolset which you don't want. Uncheck everything except P4 Merge, or you will be asked questions that don't make sense during installation.
+
+[kdiff](http://kdiff3.sourceforge.net/)
+
+KDiff is open source and powerful, but harder to use.
 
 ##### Set up p4merge as your diff and merge tool
     
     git config --global merge.tool p4merge
     git config --global diff.tool p4merge
+
+(or kdiff)
     
     git config --global difftool.p4merge.path "\"c:\program files\perforce\p4merge.exe\""
     git config --global mergetool.p4merge.cmd "\"c:\program files\perforce\p4merge.exe\" \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\""
+
+(or kdiff)
+
+    git config --global difftool.kdiff3.path "\"C:\Program Files\KDiff3\kdiff3\""
+    git config --global mergetool.kdiff3.cmd "\"C:\Program Files\KDiff3\kdiff3" "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED""
 
 To use the gui to do diffs: 
 
