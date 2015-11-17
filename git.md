@@ -62,6 +62,14 @@ KDiff is open source and powerful, but harder to use.
     git config --global difftool.kdiff3.path "\"C:\Program Files\KDiff3\kdiff3\""
     git config --global mergetool.kdiff3.cmd "\"C:\Program Files\KDiff3\kdiff3" "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED""
 
+##### SourceTree
+
+A much better git client than gitk is [SourceTree](https://www.sourcetreeapp.com/)
+
+
+
+##### Using diff & merge tools
+
 To use the gui to do diffs: 
 
     git difftool <left-branch> <right-branch>
@@ -140,6 +148,11 @@ After you create a new repo on Github or TFS, it is initially empty. Follow thes
 #####Update from remote
 
     git pull
+
+#####Manually compare/merge your local changes with remote
+
+    git fetch
+    git difftool origin/master
 
 ####Branching
 
