@@ -166,7 +166,7 @@ Note that `git pull` actually does two things: `git fetch` which syncs remote ch
 
 #####Manually compare your local staged changes with remote
 
-This will sync the local HEAD with the 
+This will sync the local HEAD with the remote, and compare your local to the unmerged remote: 
 
 
     git fetch
@@ -178,8 +178,6 @@ This will sync the local HEAD with the
 This will simply show you what you've changed that's not yet committed.
 
     git difftool
-
-
 
 ####Branching
 
