@@ -90,7 +90,13 @@ A much better git client than `gitk` is Atlassian's [SourceTree](https://www.sou
 
     alias stree="C:\Program Files (x86)\Atlassian\SourceTree\SourceTree.exe"
 
-Now you can just type `stree` at the command prompt and you'll get the view into your repo:
+Now you can just type `stree` at the command prompt and you'll get the view into your repo. Note that if you want this alias available every time you open a new command shell, you'll need to add it to a startup script, which depends on the shell you're using.
+
+* If you are using TCC/LE, you can use [tcstart.btm](tcstart.btm) to accomplish this. 
+* If using a regular DOS shell, [it's a little trickier](http://superuser.com/questions/302194/automatically-executing-commands-when-a-command-prompt-is-opened). 
+* If using the git bash or other bash shell on windows, [see this](http://superuser.com/questions/602872/how-do-i-modify-my-git-bash-profile-in-windows) for details.
+
+Example SuperUser window:
 
 ![](./images/sourcetree.png)
 
@@ -156,10 +162,12 @@ After you create a new repo on Github or TFS, it is initially empty. Follow thes
 
     git pull
 
+Note that `git pull` actually does two things: `git fetch` which syncs remote changes to your local repository, and `git merge` which brings your local commits in sync. You may not always want to do this, especially if changes are extensive. An alternative worflow is:
+
 #####Manually compare/merge your local changes with remote
 
     git fetch
-    git difftool origin/master
+    git difftool
 
 ####Branching
 
