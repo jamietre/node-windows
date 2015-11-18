@@ -62,11 +62,6 @@ KDiff is open source and powerful, but harder to use.
     git config --global difftool.kdiff3.path "\"C:\Program Files\KDiff3\kdiff3\""
     git config --global mergetool.kdiff3.cmd "\"C:\Program Files\KDiff3\kdiff3" "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED""
 
-##### SourceTree
-
-A much better git client than gitk is [SourceTree](https://www.sourcetreeapp.com/)
-
-
 
 ##### Using diff & merge tools
 
@@ -88,6 +83,18 @@ Sometimes temporary files get left behind after a merge. Run `git status` to see
     git clean -f
 
 will take care of it.
+
+##### SourceTree
+
+A much better git client than `gitk` is Atlassian's [SourceTree](https://www.sourcetreeapp.com/). This gives you a nice GUI with commit history and branching to see the state of a repository. If you add an alias to it, you can just invoke it from the command line when your current directory is a git repo, and it will automatically show you that repo, for example:
+
+    alias stree="C:\Program Files (x86)\Atlassian\SourceTree\SourceTree.exe"
+
+Now you can just type `stree` at the command prompt and you'll get the view into your repo:
+
+![](./images/sourcetree.png)
+
+
 
 ###TFS Git
 
