@@ -25,7 +25,7 @@ These steps generally should be done for any Windows configuration with Git.  Fi
 
 ##### Configure an editor
 	
-	Some git commands launch an editor that is expected to block the process; when the editor exits (after you save changes) the operation will proceed.In windows the format is a little tricky for the path. For example, this will launch Sublime Text 3 and wait for you to close the document:  
+Some git commands launch an editor that is expected to block the process; when the editor exits (after you save changes) the operation will proceed.In windows the format is a little tricky for the path. For example, this will launch Sublime Text 3 and wait for you to close the document:  
 
         git config --global core.editor "'C:/Program Files/Sublime Text 3/subl.exe' -w"
 
