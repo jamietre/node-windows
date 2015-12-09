@@ -1,6 +1,8 @@
 #Overview
 ###What is this?
 
+[![Join the chat at https://gitter.im/jamietre/node-windows](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jamietre/node-windows?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A reference for using Windows-based toolset with Node.js and the command line.
 
 Using Node and NPM is a bit of a challenge with Windows compared to *nix based systems (Linux, Mac OS, etc.), mostly because the command line toolset is different.  But with a little effort you can get a good command line working environment that's well integrated with Windows. 
