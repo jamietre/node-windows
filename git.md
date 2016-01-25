@@ -6,33 +6,33 @@ These steps generally should be done for any Windows configuration with Git.  Fi
 
 ##### Set basic profile information:
 
-    git config --global user.name "Buzz Lightyear"
-    git config --global user.email "buzzl@nasa.gov"
+        git config --global user.name "Buzz Lightyear"
+        git config --global user.email "buzzl@nasa.gov"
 
 
 ##### Set git to use windows credential store:
 
-    git config --global credential.helper wincred
+        git config --global credential.helper wincred
 
 ##### Fix firewall issues with git protocol dependencies:
 
-    git config --global url."https://github.com/".insteadOf git@github.com:
-    git config --global url."https://".insteadOf git://
+        git config --global url."https://github.com/".insteadOf git@github.com:
+        git config --global url."https://".insteadOf git://
 
 ##### Turn off auto CR/LF transformations
 
-    git config --global core.autcrlf=false
+        git config --global core.autcrlf=false
 
 ##### Configure an editor
+	
+	Some git commands launch an editor that is expected to block the process; when the editor exits (after you save changes) the operation will proceed.In windows the format is a little tricky for the path. For example, this will launch Sublime Text 3 and wait for you to close the document:  
 
-Some git commands launch an editor that is expected to block the process; when the editor exits (after you save changes) the operation will proceed.In windows the format is a little tricky for the path. For example, this will launch Sublime Text 3 and wait for you to close the document:  
-
-    git config --global core.editor "'C:/Program Files/Sublime Text 3/subl.exe' -w"
+        git config --global core.editor "'C:/Program Files/Sublime Text 3/subl.exe' -w"
 
 Notepad++
 
-    git config --global core.editor \
-        "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin" 
+        git config --global core.editor \
+            "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin" 
 
 ##### Configure diff & merge tools
 
@@ -133,10 +133,10 @@ Click "New Repository." Then clone it:
 .. now go to it. Either move your existing code into the folder `[repository]` that has been created, or do `git init` to get started.
 
 
-### Basic Git Tasks
+###Basic Git Tasks
 
 
-#### Initialize a new repo
+####Initialize a new repo
 
 After you create a new repo on Github or TFS, it is initially empty. Follow these steps to initialize it; this works fine in a new folder or with existing code. This is taken directly from [github's reference.](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
 
@@ -146,7 +146,7 @@ After you create a new repo on Github or TFS, it is initially empty. Follow thes
     git remote add origin [https://mygitserver/url.git]
 	git push origin master
 
-##### Push changes
+#####Push changes
 
     git add -A
 	git add -An   #dry run - shows files that will be added
