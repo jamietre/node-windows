@@ -9,7 +9,7 @@ Run the following commands from a shell:
 
 	vagrant init ubuntu/trusty32
     vagrant up
-    ssh vagrant
+    vagrant ssh
 
 There, you're in a linux machine. `/vagrant` points to the location where you did this.
 
