@@ -5,14 +5,16 @@ TCC/LE is a CMD replacement. It has nice editing/history features, is extensible
 
 * [ConEmu configuration with TCC](./tcc/conemu.md) - some suggestions for best results when using TCC with ConEmu.
 
-
 Here are some basic features:
 
-###Configuration
+### Configuration
 
-The  file `tcmd.ini` in the folder from which TCC/LE launches, usually `C:\Program Files\JPSoft\TCCLE14x64` has settings which can configure the default behavior.  This is old-school windows-style INI file. 
+The file `tcmd.ini` is searched for in the following locations:
 
-These are typically managed from the TCC (paid edition) UI so online documentation is a difficult find, but here is a useful configuration:
+* `C:\Program Files\JPSoft\TCCLE14x64` -- the app launch folder
+* `c:\{Users}\YourUserName\AppData\Local\JpSoft
+
+It has settings which can configure the default behavior. This is an old-school windows-style INI file. These settings are managed from the TCC (paid edition) UI so online documentation is a difficult find, but here is a useful configuration:
 
 	[4NT]
 	EditMode=Insert
@@ -22,6 +24,13 @@ These are typically managed from the TCC (paid edition) UI so online documentati
 	CursorOver=100
 	AutoCancel=Yes
 	DirJunctions=Yes
+    PathExt=No
+    ExpandPseudovariables=Yes
+    CMDVariables=No
+    AutoCancel=Yes
+    DirJunctions=Yes
+    ANSI=Yes
+    TCStartPath=c:\{Users}\YourUserName
 
 * *EditMode* is the default editing mode on a command line; "insert" is typical for Windows applications.
 * *UnixPaths* allows limited use of forward slashes.
@@ -31,7 +40,7 @@ These are typically managed from the TCC (paid edition) UI so online documentati
 * *AutoCancel* will allow you to break a script with CTRL+C without the annoying "Do you want to stop this batch file?" prompt.
 * *DirJunctions* - [TODO] not sure... I went out of my way to add this but can't find reference now
 
-Some other options you might want:
+Details:
 
 	PathExt=Yes
 
@@ -39,15 +48,15 @@ Some other options you might want:
     
 Note than when using PathExt, by default, `.BTM` files will probably not be considered executable, and some default behavior (such as running the startup file `tcstart.btm`, below) will not work. [See this](http://jpsoft.com/help/pathext.htm) for more information.
 
-    TCStartPath=D:\Somewhere
+    TCStartPath=c:\{Users}\YourUserName
 
 [*TCStartPath*](http://jpsoft.com/help/cmdlineopts.htm) defines an alternate location for look for startup files.
 
-###Startup and Exit File
+### Startup and Exit File
 
 The `tcstart.btm` file will be run automatically if found in your home directory or the application startup folder.  Likewise, the `tcexit.btm` file will be run when leaving a shell in the same circumstances.
 
-###Aliases
+### Aliases
 
 You can create aliases for any number of things, like presetting options on commands you use a lot. 
 
@@ -55,11 +64,12 @@ You can create aliases for any number of things, like presetting options on comm
 
 Note that TCC is not smart enough to not search aliases when executing commands; in bash you could just say `alias ls=ls --color=auto`. By using `ls.exe` I avoid a self referential issue. 
 
-###Colors
+### Colors
 
 Sometimes the ansi color scheme gets messed up. This will reset it:
 
     color 07
+
 
 
 

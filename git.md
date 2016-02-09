@@ -165,10 +165,18 @@ After you create a new repo on Github or TFS, it is initially empty. Follow thes
 
 Note that `git pull` actually does two things: `git fetch` which syncs remote changes to your local repository, and `git merge` which brings your local commits in sync. You may not always want to do this, especially if changes are extensive. An alternative worflow is:
 
-#####Manually compare your local staged changes with remote
+#####Compare staged changes to remote
+
+    git diff --stat --cached [remote branch]
+
+e.g.
+
+    git diff --stat --cached origin/master
+
+
+#####Interactively compare your local staged changes with remote
 
 This will sync the local HEAD with the remote, and compare your local to the unmerged remote: 
-
 
     git fetch
     git difftool origin/master
@@ -195,7 +203,7 @@ It's trivial to create branches, so it is recommended to do so before committing
 
 #####Show all branches
 
-    git branch
+    git branch -r
 
 ##### Merge your branch to master
 
@@ -205,6 +213,13 @@ Assuming changes are committed to the branch:
     git pull 
     git merge **some-branch**
     git push origin master
+
+#### Delete branch
+
+    git branch -D **branch-name**      // delete local
+    git push origin --delete **branch-name**    // delete remote
+
+#### 
 
 ###Fixing Mistakes
 
