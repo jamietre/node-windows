@@ -1,6 +1,8 @@
-##Node and NPM
+## Node and NPM
 
-####Important npm concepts
+### Important npm concepts 
+
+#### Global Modules
 
 You will frequently see instructions to install something "globally" with npm, e.g.
 
@@ -14,7 +16,22 @@ In this example, [rimraf](https://github.com/isaacs/rimraf) is an npm package th
 
 Even though `rimraf` (and `gulp` and `grunt` and lots of other things) can be installed globally, you will still see them as dependencies of other modules. When you install something that has `rimraf` as a dependency, even if you happen to have it installed already globally, it will still install it in the `node_modules` folder of your project. The dependencies of your project are completely independent of the modules you've installed globally. They could be (and often are) completely different versions.
 
-###Understanding the Node architecture
+Also, perhaps counterintuitively, when global npm commands are invoked from npm scripts, the *local version* is always used, except when no local version is installed. This means if you have a `package.json` that looks like this:
+
+    ...
+    "scripts": {
+        "clean": "rimraf dist"
+    },
+    "devDependencies": {
+        "rimraf": "^1.0.0"
+    }
+    ...
+
+.. if you happened to have version 2.0 of `rimraf` installed globally, it would still use version 1.x when you type `npm run clean`.
+
+Because of this, it's all but *required* to include any global modules used (such as `grunt`, `rimraf`, etc) as dev dependencies. I say "all but" because, if you have something installed globally, but it's not a dev dependency, the script will still run. But you have no guarantees about what version of the global package is used, or even that some other consumer has it installed.
+
+#### Understanding the Node file system architecture
 
 Understanding where things live is useful for understanding the overall architecture. 
 
