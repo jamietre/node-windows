@@ -21,10 +21,14 @@ These steps generally should be done for any Windows configuration with Git.  Fi
 
 ##### Turn off auto CR/LF transformations
 
-        git config --global core.autcrlf=false
+       git config --global core.autcrlf=false
+
+##### Make push only push your current branch
+
+       git config push.default current
 
 ##### Configure an editor
-	
+
 	Some git commands launch an editor that is expected to block the process; when the editor exits (after you save changes) the operation will proceed.In windows the format is a little tricky for the path. For example, this will launch Sublime Text 3 and wait for you to close the document:  
 
         git config --global core.editor "'C:/Program Files/Sublime Text 3/subl.exe' -w"
@@ -182,44 +186,60 @@ This will sync the local HEAD with the remote, and compare your local to the unm
     git difftool origin/master
 
 
-#####Compare your unstaged changes with local HEAD
+##### Compare your unstaged changes with local HEAD
 
 This will simply show you what you've changed that's not yet committed.
 
     git difftool
 
-####Branching
+#### Branching
 
 It's trivial to create branches, so it is recommended to do so before committing any significant changes that are not ready to be merged with the master. This is a summary, here is a nice writeup of some [common workflows](https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches)
 
-#####Create a new branch
+##### Create a new branch
 
     git checkout -b [my-new-branch]    #creates & switches to new branch
     git push origin [my-new-branch]
 
-#####Switch branches
+##### Switch branches
 
     git checkout [some-branch]
 
-#####Show all branches
+##### Show all branches
 
     git branch -r
 
-##### Merge your branch to master
-
-Assuming changes are committed to the branch:
-
-    git checkout master
-    git pull 
-    git merge **some-branch**
-    git push origin master
 
 #### Delete branch
 
     git branch -D **branch-name**      // delete local
     git push origin --delete **branch-name**    // delete remote
 
-#### 
+### Forking
+
+#### Set up a fork first
+
+Create a fork using github then clone your fork:
+
+    git clone [remote-url]
+    git add 
+    git remote add upstream [upstream-url]
+
+#### Keep in sync
+
+Method 1 - reapply all your changes. This is best if you plan to make pull requests against upstream, but may be more work.
+
+    git fetch upstream
+    git rebase upstream/master
+
+Method 2 - merge changes from master to your fork
+
+    git fetch upstream
+    git merge upstream/master
+
+Push changes to your fork:
+
+    git push -f origin master
 
 ###Fixing Mistakes
 
