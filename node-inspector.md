@@ -1,5 +1,7 @@
 ### node-inspector
 
+**Deprecated: Visual Studio Code is a much better way to debug than node-inspector now.**
+
 Debugging nodeJS is necessary. You can also debug already-running processes, which is very helpful when working with 3rd party stuff.
 
 ##### To debug a node.js app in one step

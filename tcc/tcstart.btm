@@ -1,0 +1,46 @@
+@rem don't run this when being invoked from a script
+
+if %_pipe != 0 .or. %_transient != 0 quit
+
+@rem requires the prompt-strins.js script from https://github.com/jamietre/node-windows
+@prompt `%@EXECSTR[node %home/.scripts/prompt-strings.js git-prompt]`
+
+@rem Hide windows native folders from ls output
+
+@set LS_COMMON=-I NTUSER.DAT\* -I ntuser.dat\*
+@set LS_COMMON=%LS_COMMON -I Music
+@set LS_COMMON=%LS_COMMON -I "My Documents"
+@set LS_COMMON=%LS_COMMON -I "Saved Games"
+@set LS_COMMON=%LS_COMMON -I Pictures
+@set LS_COMMON=%LS_COMMON -I "Start Menu"
+@set LS_COMMON=%LS_COMMON -I "Application Data"
+@set LS_COMMON=%LS_COMMON -I "Local Settings"
+@set LS_COMMON=%LS_COMMON -I Cookies
+@set LS_COMMON=%LS_COMMON -I Thumbs.db
+@set LS_COMMON=%LS_COMMON -I Favorites
+@set LS_COMMON=%LS_COMMON -I Recent
+@set LS_COMMON=%LS_COMMON -I Searches
+@set LS_COMMON=%LS_COMMON -I Videos
+@set LS_COMMON=%LS_COMMON -I Desktop
+@set LS_COMMON=%LS_COMMON -I Contacts
+@set LS_COMMON=%LS_COMMON -I Documents
+@set LS_COMMON=%LS_COMMON -I OneDrive
+@set LS_COMMON=%LS_COMMON -I PrintHood
+@set LS_COMMON=%LS_COMMON -I NetHood
+@set LS_COMMON=%LS_COMMON -I SendTo
+@set LS_COMMON=%LS_COMMON -I Templates
+@set LS_COMMON=%LS_COMMON -I Links
+@alias ls=ls.exe -Ah --color=auto %LS_COMMON
+
+@rem show your path in a parseable format
+@alias path=node --eval "console.log('%@REPLACE[\,/,%path]'.split(';').join('\n'))"
+
+@rem include windows tasks in ps
+@alias ps=ps.exe -W
+
+@rem a simpler kill
+@alias kill=`taskkill /F /PID %1`
+
+@start a task in another process
+@alias st=start /pgm %comspec%
+

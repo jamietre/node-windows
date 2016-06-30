@@ -4,15 +4,19 @@ This section discusses the command line environment and options other than the D
 
 ### TCC/LE Shell
 
-The windows CMD shell is awful. Most people use the git bash as an alternative, but it too is not so great. It is also not entirely compatible with the windows shell, which comes up occasionally with platform-specific npm packages.
+Though Visual Studio integration for Node and NPM is interesting, there are a lot of things that are just easier to do from a command line. Additionally, most examples you'll find involving tools like Node.JS, NPM, and build components aren't coming from the Microsoft world. They will tell you to type stuff. While technically many of them will work from a DOS shell, having a good CLI and Unix shell support will make it vastly easier to navigate.
 
-TCC/LE is free and also a drop-in CMD replacement. This makes it faster than git bash and generally works better. 
+The windows CMD shell is awful. Many people use the git bash as an alternative, but it too is not so great. It is also not entirely compatible with the windows shell, which comes up occasionally with platform-specific npm packages.
+
+TCC/LE is free and also a drop-in CMD replacement. This makes it faster than git bash and generally works better. It also provides a rich programming environment which is handy for customizing the command line, as well as copying/pasting text, inline editing, color highlighting, command history, and so on.
 
 * Download & install [TCC/LE](https://jpsoft.com/tccle-cmd-replacement.html)
 
+Detailed instructions on some confuration and customization you might want to do: (TCC/LE configuration)[./tcc-le.md]
+
 ### [Git for Windows](https://git-for-windows.github.io/) -- [github](https://github.com/git-for-windows) 
 
-The first thing is to install git. Git for windows isn't just the actual `git` program, it also includes a complete unix-like shell (msysgit) which gives you a suite of Unix command-line tools to augment the DOS toolset.
+Git for windows isn't just the actual `git` program, it also includes a complete unix-like shell (msysgit) which gives you a suite of Unix command-line tools to augment the DOS toolset.
 
 You may already have git on your computer in some older or other form. No matter what, you should download the latest version of Git for Windows (formerly MSYSGIT), version 2.5 as of this writing.. This also includes the MSYS package, a collection of unix-like utilities that make life easier, and also make it likely that when you type in some shell command you read in an online example, it will work.
 
@@ -25,30 +29,45 @@ You may already have git on your computer in some older or other form. No matter
 
 The installation process will alter your path based on the fist choice; if you selected the "use Git an optional Unix tools.." as above, then the binaries will be available to you from the command line automatically.
 
-## Get a decent CLI 
+### bash commands
 
-Though Visual Studio integration for Node and NPM is interesting, there are a lot of things that are just easier to do from a command line. Additionally, most examples you'll find involving tools like Node.JS, NPM, and build components aren't coming from the Microsoft world. They will tell you to type stuff. While technically many of them will work from a DOS shell, having a good CLI and Unix shell support will make it vastly easier to navigate this new world. 
+You absolutely need to have the bash commands (e.g. `ls`, `grep`, `cat`, etc) available to you, whatever shell you use. This is at the most basic level because every example you will come across online will use bash scripting, not windows scripting. When you install git, you get these out of the box. Make sure to choose the option to add them to your windows path.
 
-Everything will work from a DOS shell, but using an alternative can give you things like editing, copying/pasting, color highlighting, command history, and so on.
+While the bash commands provided with git are fine, a package clled
 
-So let's proceed by installing a few tools. If you are confused by the terminology around shells and consoles and stuff, [read this.](http://superuser.com/questions/144666/what-is-the-difference-between-shell-console-and-terminal)
+##### msys2
 
-###TCC/LE command shell
+[MSYS2](https://msys2.github.io/) is a fork of MSYS that has a number of enhancements, most notably an intgrated package manager called `pacman`. This makes it very easy to keep the tool set current. Even if you use TCC/LE you still are going to want to use the *nux bash commands. These will be available when you install git, but the package provided with MSYS2 is better. 
 
-The shell I recommend using is [TCC/LE](https://jpsoft.com/tccle-cmd-replacement.html). This is free commercial software; the company offers a paid version with more features. For the most part, the free version is fine. It's also extensible with plugins.
+The easiest way to accomplish this "best of all worlds" is to install Git for Windows first, then install MSYS2, and finally update your path:
 
-TCC/LE is a DOS compatible shell, and has good UI integration features, such command-line editing using standard Windows behavior, and copy/paste capabilities. It is also extensible with a plugin architecture, which gives us a lot of flexibility to improve it.
+* Remove `c:\Program Files\Git\mingw64\bin` and `c:\Program Files\git\usr\bin`
+* Add `c:\msys64\usr\bin`
 
-#####Why not CygWin/Babun like you used to recommend?
+After this, do a one-time config after installing (to get all packages current):
 
-Technically, CygWin is not compatible with node. While most of the time it works, in fact, there are scenarios where it does not handle file path and native OS integration correctly. This will manifest itself with some package failing to install in some confusing way. It's really just better not to have to worry about this on top of everything else. CygWin actually runs on top of the DOS shell, and manages its own processes, whereas TCC/LE is an actual DOS shell with extensions.  As a result, CygWin is slower, and there can be problems with the way it interacts with Windows.
+    # create an alias for entering the bash shell
+    # you may want to put this in tcstart.cmd
+    
+    alias sh=C:\msys64\usr\bin\bash --login
+    sh
+    
+    pacman -Sy pacman
+    pacman -Syu
+    # CTRL+C to exit 
+        
+    pacman -Su
 
-#####Other alternatives?
+Any issues with this, try doing this (also from bash)
+   
 
-You can also use the git bash mintty console that comes with Git for Windows. A lot of people are perfectly happy with this. It is better than the DOS shell, but not a lot. It doesn't support editing of command lines.
+    pacman-db-upgrade
+    pacman-key --init
+    pacman-key --populate msys2
 
+Once this is all updated, you don't have to use the bash shell to run pacman generally. 
 
-## [ConEmu](http://www.fosshub.com/ConEmu.html) - [github](https://github.com/Maximus5/ConEmu)
+### [ConEmu](http://www.fosshub.com/ConEmu.html) - [github](https://github.com/Maximus5/ConEmu)
 
 ConEmu is a console manager. This is different from a console or a shell; it provides GUI management of your shells and adds UI integration features. It provides a tabs for managing multiple active shells, and some other nice interaction with Windows such as clipboard support, resizing, font selection, and so on. You can also use it to automatically invoke your favorite shell by default whenever some other app asks for a shell.  
 
@@ -62,7 +81,7 @@ If you have installed Git and TCC before you install ConEmu, it will automatical
 
 When you are done, launch ConEmu by clicking the icon. From the options, choose "Startup" and select "Specified Named Task," and choose "{TCC}". Now, ConEmu will open a TCC shell by default.
 
-## Node & NPM
+### Node & NPM
 
 After you've got your shell up and running it's time to install nodejs.
 
@@ -84,11 +103,11 @@ Check your path:
 	* If it is under "System Variables," and it appears after the `nodejs` path, then cut it from it's location there.
 * Either way, paste it just before `c:\Program Files\nodejs;` in the System Path. In the end, it should only appear once, under System Path, before the nodejs path. 
 
-#####Update [npm](https://www.npmjs.com/package/npm) 
+##### Update [npm](https://www.npmjs.com/package/npm) 
 
 Node Package Manager (npm) is installed automatically when you install Node. However, it's probably not the latest version, and we actually want to use the cutting edge `npm@3` release. 
 
-#####Install NPM@3
+##### Install NPM@3
 
 NPM@3 is in beta release right now, so you have to ask for it specifically. This will get you the latest announced version of the beta.
 
@@ -114,7 +133,7 @@ Sometimes, removing npm will fail, for reasons unknown. If this happens, you can
 (In fact you can just do this anytime without even using `npm remove` to update... it just doesn't seem that clean :)
 
 
-#####Configuring npm
+##### Configuring npm
 
 I find it useful to see output when NPM is installing things, especially to the extent that we are using beta software, it's nice to see what's happening:
 

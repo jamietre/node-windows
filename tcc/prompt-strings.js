@@ -4,7 +4,6 @@ var arg = process.argv[process.argv.length-1].toLowerCase();
 
 app(arg)
 
-
 function app(arg) {
     switch(arg) {
         case "git-prompt": 
