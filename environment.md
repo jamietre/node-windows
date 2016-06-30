@@ -12,7 +12,7 @@ TCC/LE is free and also a drop-in CMD replacement. This makes it faster than git
 
 * Download & install [TCC/LE](https://jpsoft.com/tccle-cmd-replacement.html)
 
-Detailed instructions on some confuration and customization you might want to do: (TCC/LE configuration)[./tcc-le.md]
+Detailed instructions on some confuration and customization you might want to do: [TCC/LE configuration](./tcc-le.md)
 
 ### [Git for Windows](https://git-for-windows.github.io/) -- [github](https://github.com/git-for-windows) 
 
@@ -33,7 +33,7 @@ The installation process will alter your path based on the fist choice; if you s
 
 You absolutely need to have the bash commands (e.g. `ls`, `grep`, `cat`, etc) available to you, whatever shell you use. This is at the most basic level because every example you will come across online will use bash scripting, not windows scripting. When you install git, you get these out of the box. Make sure to choose the option to add them to your windows path.
 
-While the bash commands provided with git are fine, a package clled
+While the bash commands provided with git are fine, a package cAlled
 
 ##### msys2
 
