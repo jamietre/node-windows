@@ -7,6 +7,20 @@ TCC/LE is a CMD replacement. It has nice editing/history features, is extensible
 
 Here are some basic features:
 
+### Command prompt
+
+With a real bash shell, you have all kinds of shell replacements like zsh and fish. We have no such thing. The biggest thing I miss is a decent command prompt, though. With TCC this is easy to do.
+
+* Download [prompt-strings.js](./tcc/prompt-strings.js)
+* Put it somewhere under your home directory, e.g. a folder called `.scripts`
+* Add the following to your `tcstart.ini`
+
+    @prompt `%@EXECSTR[node %home/.scripts/prompt-strings.js git-prompt]`
+
+This just runs a node app to obtain the text for your prompt, that looks like this:
+
+
+
 ### Configuration
 
 The file `tcmd.ini` is searched for in the following locations:

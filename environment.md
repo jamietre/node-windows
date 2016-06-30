@@ -1,15 +1,16 @@
-### Environment
+## Environment
 
 This section discusses the command line environment and options other than the DOS shell. You can also use Powershell which is much improved, and fully supports Node.  However, this guide is oriented more towards shells that provide a unix-like environment, so we don't specifically discuss Powershell. Because most reference work related to node.js assumes you are using a bash shell, with unix-like shell commands, we'll work towards getting something like that functional in Windows. 
 
+### TCC/LE Shell
 
-# Quick Start
+The windows CMD shell is awful. Most people use the git bash as an alternative, but it too is not so great. It is also not entirely compatible with the windows shell, which comes up occasionally with platform-specific npm packages.
 
-I'll discuss all these components in more detail (TODO), but I suggest you just walk through the quick install to get your system set up. If you already have some components installed, such as Node, please read the instructions anyway for additional configuration you might need to do.
+TCC/LE is free and also a drop-in CMD replacement. This makes it faster than git bash and generally works better. 
 
 * Download & install [TCC/LE](https://jpsoft.com/tccle-cmd-replacement.html)
 
-## [Git for Windows](https://git-for-windows.github.io/) -- [github](https://github.com/git-for-windows) 
+### [Git for Windows](https://git-for-windows.github.io/) -- [github](https://github.com/git-for-windows) 
 
 The first thing is to install git. Git for windows isn't just the actual `git` program, it also includes a complete unix-like shell (msysgit) which gives you a suite of Unix command-line tools to augment the DOS toolset.
 
@@ -24,7 +25,7 @@ You may already have git on your computer in some older or other form. No matter
 
 The installation process will alter your path based on the fist choice; if you selected the "use Git an optional Unix tools.." as above, then the binaries will be available to you from the command line automatically.
 
-##Get a decent CLI 
+## Get a decent CLI 
 
 Though Visual Studio integration for Node and NPM is interesting, there are a lot of things that are just easier to do from a command line. Additionally, most examples you'll find involving tools like Node.JS, NPM, and build components aren't coming from the Microsoft world. They will tell you to type stuff. While technically many of them will work from a DOS shell, having a good CLI and Unix shell support will make it vastly easier to navigate this new world. 
 
