@@ -4,6 +4,7 @@ var arg = process.argv[process.argv.length-1].toLowerCase();
 
 app(arg)
 
+
 function app(arg) {
     switch(arg) {
         case "git-prompt": 
@@ -41,10 +42,9 @@ function gitStatus(done) {
     });
 
     child.on('close', function(e) {
-        if (stderr && stderr.indexOf("Not a git repository")<=0) {
-            throw new Error(stderr);
+        if (!stdout && stderr && stderr.indexOf("Not a git repository")<=0) {
+            done(' ?')
         } else {
-    
             done(parseStatus(stdout));
         }
     });
