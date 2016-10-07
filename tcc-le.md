@@ -83,7 +83,7 @@ With a real bash shell, you have all kinds of shell replacements like zsh and fi
 
 This just runs a node app to obtain the text for your prompt, that looks like this:
 
-![TCC prompt](tcc-prompt-example.png)
+![TCC prompt](./tcc/tcc-prompt-example.png)
 
 The prompt provides the last two segments of the working directory, and a git status indicator (if applicable) that tells you whether anything is dirty (*) and the number of commits ahead or behind you are from master (+1)
 
