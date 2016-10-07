@@ -79,7 +79,7 @@ With a real bash shell, you have all kinds of shell replacements like zsh and fi
 * Put it somewhere under your home directory, e.g. a folder called `.scripts`
 * Add the following to your `tcstart.ini`
 
-    @prompt `%@EXECSTR[node %home/.scripts/prompt-strings.js git-prompt]`
+    @prompt ``%@EXECSTR[node %home/.scripts/prompt-strings.js git-prompt]``
 
 This just runs a node app to obtain the text for your prompt, that looks like this:
 
