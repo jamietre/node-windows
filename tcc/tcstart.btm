@@ -1,9 +1,11 @@
 @rem don't run this when being invoked from a script
 
-if %_pipe != 0 .or. %_transient != 0 quit
+@if %_pipe != 0 .or. %_transient != 0 quit
 
-@rem requires the prompt-strins.js script from https://github.com/jamietre/node-windows
-@prompt `%@EXECSTR[node %home/.scripts/prompt-strings.js git-prompt]`
+@set HOME=%HOMEDRIVE%%HOMEPATH%
+
+@rem requires the prompt-strings.js script from https://github.com/jamietre/node-windows
+@prompt `%@EXECSTR[node %HOME/.scripts/prompt-strings.js git-prompt]`
 
 @rem Hide windows native folders from ls output
 
@@ -41,6 +43,5 @@ if %_pipe != 0 .or. %_transient != 0 quit
 @rem a simpler kill
 @alias kill=`taskkill /F /PID %1`
 
-@start a task in another process
+@rem start a task in another process
 @alias st=start /pgm %comspec%
-
