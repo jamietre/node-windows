@@ -36,6 +36,15 @@ You can reload the file during a session by hitting the URL
 It will show a message in the status bar indicating success.
 
 
+### matching details
+
+When matching a *string* it only tries to match the URL. This is to prevent lots of false positives for words appearing in query strings, etc.
+
+If you need to match a full path then you should use more explicit regexp matching, e.g. 
+
+`/^(http|https)://google.com/voice/`
+
+
 ### merging changes
 
 If you have made changes already to your `CustomRules.js`, or this simply doesn't seem to have version parity with the one you're using already, merge as follows:
