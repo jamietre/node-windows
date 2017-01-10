@@ -31,6 +31,66 @@ import System.IO;
 
 
 
+class Filters 
+{
+                        
+    static var _FilterConfigPath: String
+    public static function FilterConfigPath() : String 
+    { 
+        if (_FilterConfigPath == null) {
+            _FilterConfigPath = Environment.ExpandEnvironmentVariables("%HOMEDRIVE%%HOMEPATH%\\.fiddler\\filters.txt");
+        }
+        return _FilterConfigPath;
+    }
+
+    static var _Filters: String[] = null;
+    static function GetFilters(): String[] {
+        if (_Filters == null) {
+            var filters = FilterConfigPath();
+            
+            if (File.Exists(filters)) {
+                _Filters = File.ReadAllLines(filters);
+            } else {
+                _Filters = new String[0];
+            }
+        }
+        return _Filters;
+    }
+        
+    static function Matches(session: Session): boolean {
+        var filter: String;
+        var exp: Regex;
+        var i: Int32;
+        
+        if (session.hostname == "fiddler") {
+            _Filters = null;
+            FiddlerObject.StatusText="Reloaded filters from \"" + FilterConfigPath() + "\""
+            return false;
+        }
+        
+        var filters = GetFilters();
+
+        var url = session.fullUrl;
+
+        for (i = 0; i < filters.Length; i++) {
+            var filter = filters[i].Trim();
+            
+            if (filter.StartsWith("/") && filter.EndsWith("/")) {
+                filter = filter.Substring(1, filter.Length - 2)
+                exp = new Regex(filter, RegexOptions.IgnoreCase);
+                if (exp.IsMatch(session.fullUrl)) {
+                    return true;
+                }
+            } else {
+                if (session.hostname.Contains(filter)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+
 
 class Handlers
 {
@@ -72,14 +132,6 @@ class Handlers
     }
     */
 
-    static var _FilterConfigPath: String
-    static function FilterConfigPath() : String 
-    { 
-        if (_FilterConfigPath == null) {
-            _FilterConfigPath = Environment.ExpandEnvironmentVariables("%HOMEDRIVE%%HOMEPATH%\\.fiddler\\filters.txt");
-        }
-        return _FilterConfigPath;
-    }
              
     public static RulesOption("Hide 304s")
     BindPref("fiddlerscript.rules.Hide304s")
@@ -151,53 +203,6 @@ class Handlers
         }
         UI.actUpdateInspector(true,true);
     }
-
-    static var _Filters: String[] = null;
-    static function Filters(): String[] {
-        if (Handlers._Filters == null) {
-            var filters = FilterConfigPath();
-            
-            if (File.Exists(filters)) {
-                Handlers._Filters = File.ReadAllLines(filters);
-            } else {
-                Handlers._Filters = new String[0];
-            }
-        }
-        return Handlers._Filters;
-    }
-        
-    static function Matches(session: Session): boolean {
-        var filter: String;
-        var exp: Regex;
-        var i: Int32;
-        
-        if (session.hostname == "fiddler") {
-            Handlers._Filters = null;
-            FiddlerObject.StatusText="Reloaded filters from \"" + FilterConfigPath() + "\""
-            return false;
-        }
-        
-        var filters = Handlers.Filters();
-
-        var url = session.fullUrl;
-
-        for (i = 0; i < filters.Length; i++) {
-            var filter = filters[i].Trim();
-            
-            if (filter.StartsWith("/") && filter.EndsWith("/")) {
-                filter = filter.Substring(1, filter.Length - 2)
-                exp = new Regex(filter, RegexOptions.IgnoreCase);
-                if (exp.IsMatch(session.fullUrl)) {
-                    return true;
-                }
-            } else {
-                if (session.hostname.Contains(filter)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
         
     static function OnBoot() {
             // MessageBox.Show("Fiddler has finished booting");
@@ -232,8 +237,9 @@ class Handlers
         // }
        
         
-        if (Handlers.Matches(oSession)) {
+        if (Filters.Matches(oSession)) {
             oSession.Ignore();
+            return;
         }
 
         if ((null != gs_ReplaceToken) && (oSession.url.indexOf(gs_ReplaceToken)>-1)) {   // Case sensitive
