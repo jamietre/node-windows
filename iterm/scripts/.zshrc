@@ -165,8 +165,10 @@ function git_prompt_info() {
 
 function precmd() {
    parts=$(git_prompt_info)
-   short_path=${parts[(ws:+:)1]}
-   git_info=${parts[(ws:+:)2]}
+   short_path=${parts[(ws:____:)1]}
+   git_info=${parts[(ws:____:)2]}
 }
 
-PROMPT='$fg_bold[green]$short_path$fg_bold[cyan]$git_info$reset_color > '
+
+
+PROMPT='[$fg_bold[green]$short_path$reset_color]$fg_bold[cyan]$git_info$reset_color> '

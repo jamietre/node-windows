@@ -11,7 +11,7 @@ function app(arg) {
             var path = shortPath();
             function outputPrompt(status) {
                 //var fmt ="${fg[green]}"+ path + "${fg[blue]}"+status+"${reset_color}>";
-                console.log(path + "+" + status);
+                console.log(path + "____" + status);
             }
 
             gitStatus(outputPrompt);
