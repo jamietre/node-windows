@@ -1,88 +1,4 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/jamiet/.oh-my-zsh
-
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# Some custom zsh configuraiton for windows-like keyboard inline editing behavior
 
 r-delregion() {
     if ((REGION_ACTIVE)) then
@@ -123,11 +39,15 @@ for key kcap seq mode widget (
     home    khome   $'\EOH' deselect beginning-of-line
     home2   x       $'\E1~' deselect beginning-of-line
 
+    del     kdch1   $'\E[3~' delregion delete-char
+    del2    x       $'^D' delregion delete-char
+    bs      x       $'^?' delregion backward-delete-char
+
 # \E[1;  = ctrl
 # \e[1;  = shift
 
-# these are default xterm bindings - but we want to use command key, so have to
-# define custom esc sequeeces in iTerm2
+# these are default xterm bindings using CTRL key
+
 
 #   csleft  x       $'\E[1;6D' select backward-word
 #   csright x       $'\E[1;6C' select forward-word
@@ -136,6 +56,10 @@ for key kcap seq mode widget (
 
 #   cleft   x       $'\E[1;5D'   deselect backward-word
 #   cright  x       $'\E[1;5C'   deselect forward-word
+
+# I want to use command key instead of control, but the command key can't be captured
+# by the terminal directly. So in iTerm set up "csleft", "csright", etc to emit
+# custom escape sequences.
 
     csleft  x       $'\Ecsleft' select backward-word
     csright x       $'\Ecsright' select forward-word
@@ -146,10 +70,6 @@ for key kcap seq mode widget (
     cright  x       $'\Ecright'   deselect forward-word
 
 
-    del     kdch1   $'\E[3~' delregion delete-char
-    del2    x       $'^D' delregion delete-char
-    bs      x       $'^?' delregion backward-delete-char
-
   ) {
   eval "key-$key() r-$mode $widget"
   zle -N key-$key
@@ -158,6 +78,12 @@ for key kcap seq mode widget (
 
 ### PROMPT
 
+# this sets up a prompt:
+
+# [last-two/segments] git-status>
+
+# this uses a helper node script prompt-strings.js to get git info. I'm sure you
+# could do this with a shell script but javascript is so much easier.
 
 function git_prompt_info() {
   echo $(node ~/.scripts/prompt-strings git-prompt)
@@ -169,6 +95,10 @@ function precmd() {
    git_info=${parts[(ws:____:)2]}
 }
 
+# lanch gitkraken
 
+PROMPT='[%{$fg_bold[green]%}$short_path%{$reset_color%}]%{$fg_bold[cyan]%}$git_info%{$reset_color%}> '
 
-PROMPT='[$fg_bold[green]$short_path$reset_color]$fg_bold[cyan]$git_info$reset_color> '
+### Run another script with local aliases
+
+source ~/.bash_profile
